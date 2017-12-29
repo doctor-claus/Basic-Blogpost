@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPost, deletePost } from '../actions/index';
+import { fetchPost, deletePost, editPost } from '../actions/index';
 import { Link } from 'react-router-dom';
 class PostsShow extends Component{
     componentDidMount(){
@@ -13,6 +13,9 @@ class PostsShow extends Component{
             this.props.history.push('/');
         });
     }
+    onLink(){
+        this.props.editPost(this.props.post);
+    }
     render(){
         const { post } = this.props;
         if(!post){
@@ -20,7 +23,8 @@ class PostsShow extends Component{
         }
         return (
             <div className= "postshow">
-                <Link to= "/">Back to Index</Link>
+                <div><Link to= "/">Back to Index</Link></div>
+                <div className= "edit"><Link to= "/posts/edit" onClick = {this.onLink.bind(this)}>Edit Post</Link></div>
                 <button 
                     className = "btn btn-danger pull-xs-right"
                     onClick = {this.onDeleteClick.bind(this)}>
@@ -35,4 +39,4 @@ class PostsShow extends Component{
 function mapStateToProps(state, ownProps) {
     return { post: state.posts[ownProps.match.params.id] }
 }
-export default connect(mapStateToProps, { fetchPost, deletePost }) (PostsShow);
+export default connect(mapStateToProps, { fetchPost, deletePost, editPost }) (PostsShow);

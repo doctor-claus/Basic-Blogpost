@@ -7,6 +7,7 @@ import reducers from './reducers';
 import PostsIndex from './components/posts_index';
 import PostsNew from'./components/posts_new';
 import PostsShow from './components/posts_show';
+import PostEdit from './components/post_edit';
 import ReduxPromise from 'redux-promise';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
@@ -17,6 +18,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path= "/posts/new" component = {PostsNew} />
+          <Route path= "/posts/edit" component = {PostEdit} />
           <Route path= "/posts/:id" component = {PostsShow}  />
           <Route path= "/" component = {PostsIndex}  />
         </Switch>

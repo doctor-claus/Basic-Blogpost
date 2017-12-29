@@ -55,6 +55,14 @@
     .postshow{
         -webkit-animation: fadein 1s;
         margin-top: 100px;
+        .edit{
+            position: absolute;
+            left: 100px;
+        }
+        .blank{
+            height: 100px;
+            width: 100px;
+        }
     }
     .title{
         margin-top: 100px;
